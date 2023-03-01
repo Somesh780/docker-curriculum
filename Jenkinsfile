@@ -39,6 +39,11 @@ pipeline {
         
       }
     }
-    
+    stage('Deploy in ECS') {
+      steps {
+           sh "aws ecs update-service --cluster my-cluster --service my-service --force-new-deployment"
+        
+      }
+    }
   }
 }
