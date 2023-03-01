@@ -6,10 +6,6 @@ pipeline {
     IMAGE_REPO_NAME="myapp"
     IMAGE_TAG="latest"
     REPOSITORY_URI = "${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${IMAGE_REPO_NAME}"
-    AWS_ECS_TASK_DEFINITION = "my-td"
-    AWS_ECS_CLUSTER = "my-cluster"
-    AWS_ECS_SERVICE = "my-service"
-
   }
 
   stages {
@@ -32,7 +28,7 @@ pipeline {
         }
       
     }
-  
+  }
     // Uploading Docker images into AWS ECR
     stage('Pushing to ECR') {
       steps{  
@@ -43,12 +39,5 @@ pipeline {
         
       }
     }
-//     stage('Deploy in ECS') {
-//       steps {
-//            sh "aws ecs update-service --cluster my-cluster --service my-service --force-new-deployment"
-        
-//       }
-//     }
-
   }
 }
