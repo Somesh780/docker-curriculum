@@ -19,16 +19,16 @@ pipeline {
     }
 
     stage('Build Docker image') {
-    steps {
-        dir('flask-app') {
-                  // Your steps in this directory
-                  sh 'ls -la'
-                  sh 'pwd'
-                  sh 'docker build -t ${IMAGE_REPO_NAME}:${IMAGE_TAG} .'
-        }
-      
+      steps {
+          dir('flask-app') {
+                    // Your steps in this directory
+                    sh 'ls -la'
+                    sh 'pwd'
+                    sh 'docker build -t ${IMAGE_REPO_NAME}:${IMAGE_TAG} .'
+          }
+        
+      }
     }
-  }
     // Uploading Docker images into AWS ECR
     stage('Pushing to ECR') {
       steps{  
@@ -39,5 +39,6 @@ pipeline {
         
       }
     }
+    
   }
 }
