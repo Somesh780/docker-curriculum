@@ -4,7 +4,13 @@ pipeline {
   stages {
     stage('Build Docker image') {
       steps {
-        sh 'docker build -t my-docker-image .'
+         dir('flask-app') {
+                    // Your steps in this directory
+                    sh 'ls -la'
+                    sh 'pwd'
+                    sh 'docker build -t my-docker-image .'
+         }
+        
       }
     }
   }
