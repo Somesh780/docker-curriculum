@@ -8,7 +8,7 @@ pipeline {
     REPOSITORY_URI = "${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${IMAGE_REPO_NAME}"
     AWS_ECS_TASK_DEFINITION = "my-td"
     AWS_ECS_CLUSTER = "my-cluster"
-    AWS_ECS_SERVICE = ""
+    AWS_ECS_SERVICE = "my-service"
 
   }
 
