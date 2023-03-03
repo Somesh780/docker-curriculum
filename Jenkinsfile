@@ -4,8 +4,13 @@ pipeline {
     AWS_ACCOUNT_ID="772569463424"
     AWS_DEFAULT_REGION="ap-south-1"
     IMAGE_REPO_NAME="myapp"
-    IMAGE_TAG="latest"
+    IMAGE_TAG="${env.BUILD_ID}
+    CLUSTER_NAME="my-cluster"
+    SERVICE_NAME="my-service"
+    TASK_DEFINITION_NAME="td6"
+    DESIRED_COUNT="1"
     REPOSITORY_URI = "${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${IMAGE_REPO_NAME}"
+    registryCredential = "aws"
   }
 
   stages {
@@ -42,13 +47,8 @@ pipeline {
     stage('Update ECS cluster') {
         steps {
             script {
-                def aws_region = "ap-south-1" // replace with your AWS region
-                def ecs_service = "my-service" // replace with your ECS service name
-                def ecs_cluster = "my-cluster" // replace with your ECS cluster name
-                def docker_image = "myapp" // replace with your Docker image name
-
-                sh "aws configure set default.region ${aws_region}"
-                sh "aws ecs update-service --cluster ${ecs_cluster} --service ${ecs_service} --force-new-deployment --task-definition ${docker_image}"
+                sh "aws configure set default.region ${AWS_DEFAULT_REGION}"
+                sh "aws ecs update-service --cluster ${CLUSTER_NAME} --service ${SERVICE_NAME} --force-new-deployment --task-definition ${IMAGE_REPO_NAME}"
             }
         }
     }
