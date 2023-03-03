@@ -4,7 +4,7 @@ pipeline {
     AWS_ACCOUNT_ID="772569463424"
     AWS_DEFAULT_REGION="ap-south-1"
     IMAGE_REPO_NAME="myapp"
-    IMAGE_TAG="${env.BUILD_ID}
+    IMAGE_TAG="${env.BUILD_ID}"
     CLUSTER_NAME="my-cluster"
     SERVICE_NAME="my-service"
     TASK_DEFINITION_NAME="td6"
