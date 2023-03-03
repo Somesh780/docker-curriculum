@@ -45,7 +45,7 @@ pipeline {
                 def aws_region = "ap-south-1" // replace with your AWS region
                 def ecs_service = "my-service" // replace with your ECS service name
                 def ecs_cluster = "my-cluster" // replace with your ECS cluster name
-                def docker_image = "my-app" // replace with your Docker image name
+                def docker_image = "myapp" // replace with your Docker image name
 
                 sh "aws configure set default.region ${aws_region}"
                 sh "aws ecs update-service --cluster ${ecs_cluster} --service ${ecs_service} --force-new-deployment --task-definition ${docker_image}"
