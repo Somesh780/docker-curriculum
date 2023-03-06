@@ -5,7 +5,7 @@ pipeline {
     AWS_DEFAULT_REGION="ap-south-1"
     IMAGE_REPO_NAME="myimage"
     IMAGE_TAG="latest"
-    CLUSTER_NAME="mycluster"
+    CLUSTER_NAME="my-cluster"
     SERVICE_NAME="myservice"
     TASK_DEFINITION_NAME="td8"
     DESIRED_COUNT="1"
